@@ -47,6 +47,7 @@ str(test_images)
 ```
 
 ```{r normImages}
+# Pre-processing the data (to a matrix form)
 train_images <- array_reshape(train_images, c(60000, 28 * 28))
 # train_images[1,]
 train_images <- train_images / 255
@@ -62,6 +63,7 @@ str(test_images)
 ## Prepare labels:
 
 ```{r strLabelsPre}
+# Pre-processing the data (to a matrix form as well, with probabilities)
 str(train_labels)
 str(test_labels)
 ```
@@ -95,7 +97,7 @@ summary(network)
 ## Compile
 
 ```{r compile}
-network %>% compile(
+network %>% compile(    # Note: NO need to assign
   optimizer = "rmsprop",
   loss = "categorical_crossentropy",
   metrics = c("accuracy")
